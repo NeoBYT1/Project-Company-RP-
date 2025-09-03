@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ST Studio Lite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ====== RESET ====== */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #1a0d2e; color:#fff; scroll-behavior: smooth; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ====== HEADER ====== */
+    header {
+      position: fixed; width: 100%; top:0; left:0; background: rgba(30,0,50,0.95); display:flex; justify-content:space-between; align-items:center; padding:15px 50px; z-index:1000; backdrop-filter: blur(5px);
+    }
+    header h1 { color:#a855f7; font-size:1.8rem; font-weight:700; }
+    nav a { margin-left:25px; font-weight:600; transition:0.3s; color:#fff; }
+    nav a:hover { color:#d8b4fe; }
+
+    /* ====== HERO ====== */
+    .hero {
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background: linear-gradient(135deg, #6b21a8, #a855f7);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    .hero h2 { font-size:3rem; margin-bottom:20px; animation: fadeIn 2s; }
+    .hero p { font-size:1.2rem; margin-bottom:30px; max-width:600px; animation: fadeIn 2s 0.5s; }
+    .hero .btn { background:#fff; color:#6b21a8; padding:15px 30px; border-radius:10px; font-weight:600; transition:0.3s; }
+    .hero .btn:hover { background:#d8b4fe; color:#1a0d2e; }
+
+    /* ====== SECTIONS ====== */
+    section { padding:80px 20px; max-width:1200px; margin:auto; }
+    section h2 { color:#d8b4fe; font-size:2.5rem; text-align:center; margin-bottom:30px; animation: fadeIn 1s; }
+    section p { max-width:800px; margin:10px auto; text-align:center; line-height:1.6; }
+
+    /* ====== PROFESSORES ====== */
+    .professores { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:40px; }
+    .card { background: rgba(255,255,255,0.05); padding:20px; border-radius:15px; width:250px; text-align:center; transition:0.3s; }
+    .card img { width:100%; border-radius:15px; margin-bottom:15px; }
+    .card h3 { color:#fff; margin-bottom:10px; }
+    .card p { color:#d1c4e9; font-size:0.9rem; }
+
+    .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(168,85,247,0.5); }
+
+    /* ====== BOTÕES ====== */
+    .btn { display:inline-block; margin:10px; padding:12px 25px; background:#a855f7; color:#fff; font-weight:600; border-radius:10px; transition:0.3s; }
+    .btn:hover { background:#d8b4fe; color:#1a0d2e; }
+
+    /* ====== FAQ ====== */
+    .faq-item { background: rgba(255,255,255,0.05); margin:10px auto; padding:20px; border-radius:10px; max-width:800px; cursor:pointer; transition:0.3s; }
+    .faq-item:hover { background: rgba(255,255,255,0.1); }
+    .faq-item h4 { margin-bottom:10px; color:#fff; }
+    .faq-item p { display:none; color:#d1c4e9; line-height:1.5; }
+
+    /* ====== FOOTER ====== */
+    footer { text-align:center; padding:30px; background:#0f0b1e; margin-top:50px; font-size:0.9rem; color:#aaa; }
+    footer span { color:#a855f7; font-weight:700; }
+
+    /* ====== ANIMAÇÕES ====== */
+    @keyframes gradientBG {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+    /* ====== RESPONSIVO ====== */
+    @media(max-width:768px){ .professores { flex-direction:column; align-items:center; } }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header>
+    <h1>ST Studio Lite</h1>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#professores">Professores</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#tutoriais">Tutoriais</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="inicio">
+    <h2>Aprenda a criar jogos no Studio Lite</h2>
+    <p>O ST Studio é a plataforma que ensina qualquer pessoa a criar jogos incríveis no Studio Lite, diretamente do celular!</p>
+    <a href="#comunidade" class="btn">Junte-se à Comunidade</a>
+  </section>
+
+  <!-- ====== SOBRE ====== -->
+  <section id="sobre">
+    <h2>Sobre o ST Studio</h2>
+    <p>O <strong>ST Studio</strong> é a comunidade global que ensina como criar jogos no <strong>Studio Lite</strong> pelo celular.  
+    Aqui você encontra tutoriais detalhados, professores especializados e suporte completo para transformar suas ideias em jogos reais, sem precisar de PC.</p>
+  </section>
+
+  <!-- ====== PROFESSORES ====== -->
+  <section id="professores">
+    <h2>Nossos Professores</h2>
+    <div class="professores">
+      <div class="card">
+        <img src="https://via.placeholder.com/250x250.png?text=Neob" alt="Neob">
+        <h3>Neob</h3>
+        <p>Especialista em desenvolvimento de jogos no Studio Lite, mentor da comunidade.</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/250x250.png?text=Shiro" alt="Shiro">
+        <h3>Shiro</h3>
+        <p>Instrutor de design e mecânicas avançadas, ajudando iniciantes a evoluir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COMUNIDADE ====== -->
+  <section id="comunidade">
+    <h2>Comunidade Oficial</h2>
+    <p>Participe da nossa comunidade para aprender, compartilhar e crescer! Temos suporte, tutoriais e dicas exclusivas.</p>
+    <a class="btn" href="https://discord.gg/ZcWgCWDyRx" target="_blank">🌐 Discord Oficial</a>
+    <a class="btn" href="https://youtube.com/@st_studio-ofc?si=hFpa5-vdSpMXr-YX" target="_blank">▶️ YouTube Oficial</a>
+  </section>
+
+  <!-- ====== TUTORIAIS ====== -->
+  <section id="tutoriais">
+    <h2>Tutoriais</h2>
+    <p>Aprenda passo a passo como criar jogos incríveis no <strong>Studio Lite</strong> usando nossos guias e vídeos exclusivos.  
+    O ST Studio ensina desde o básico até técnicas avançadas para criar jogos completos direto do celular.</p>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section id="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-item">
+      <h4>O que é o ST Studio?</h4>
+      <p>O ST Studio é a comunidade que ensina como criar jogos no Studio Lite pelo celular, com tutoriais, professores e suporte.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Preciso de um PC para criar jogos?</h4>
+      <p>Não! Com o Studio Lite e o ST Studio, você pode criar e publicar jogos totalmente pelo celular.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Como posso entrar na comunidade?</h4>
+      <p>Basta clicar nos botões de Discord ou YouTube para se conectar e começar a aprender com nossos professores.</p>
+    </div>
+  </section>
+
+  <!-- ====== CONTATO ====== -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Quer falar com a equipe do ST Studio Lite ou tirar dúvidas?  
+    Participe do Discord ou siga nosso canal no YouTube!</p>
+  </section>
+
+  <!-- ====== RODAPÉ ====== -->
+  <footer>
+    <p>© 2025 ST Studio Lite - Todos os direitos reservados</p>
+    <p>Site feito por <span>Neob</span></p>
+  </footer>
+
+  <!-- ====== SCRIPT FAQ ====== -->
+  <script>
+    const faqs = document.querySelectorAll('.faq-item');
+    faqs.forEach(item => {
+      item.addEventListener('click', () => {
+        const p = item.querySelector('p');
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
