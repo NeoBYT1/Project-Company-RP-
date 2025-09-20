@@ -1,228 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ghost PvP — Servidor SAMP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ST Studio — Cursos Gratuitos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #020817;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background: rgba(0, 0, 0, 0.6);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    header h1 {
-      font-size: 1.2rem;
-      color: #0ff;
-      margin: 0;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #0ff;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 120px 20px 60px;
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      color: #0ff;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 20px;
-    }
-
-    .hero img {
-      max-width: 90%;
-      height: auto;
-      margin-top: 30px;
-      border-radius: 10px;
-    }
-
-    .btn {
-      background: #0ff;
-      color: #000;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #00c3c3;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    section h3 {
-      font-size: 2rem;
-      color: #0ff;
-      margin-bottom: 20px;
-    }
-
-    section p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      background: #0b0226;
+      color: #eee;
       line-height: 1.6;
     }
-
-    .modo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 80px;
+    header {
+      background: linear-gradient(90deg,#6d28d9,#8b5cf6);
+      padding: 2rem;
+      text-align:center;
+      color:white;
     }
-
-    .modo img {
-      max-width: 85%;
-      height: auto;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
-    @media (min-width: 768px) {
-      .modo {
-        flex-direction: row;
-        text-align: left;
-        justify-content: space-around;
-      }
-
-      .modo .texto {
-        flex: 1;
-        padding: 20px;
-      }
-
-      .modo img {
-        flex: 1;
-        max-width: 400px;
-      }
-    }
+    header h1 {font-size:2.5rem; font-weight:900;}
+    header p {font-size:1.2rem; margin-top:.5rem;}
+    nav {margin-top:1rem;}
+    nav a {color:#fff; margin:0 .8rem; text-decoration:none; font-weight:600;}
+    section {padding:4rem 10%;}
+    .hero {text-align:center; padding:6rem 10%; background:#12042f;}
+    .hero h2 {font-size:2.2rem; margin-bottom:1rem;}
+    .hero p {font-size:1.1rem; max-width:800px; margin:0 auto;}
+    .cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:2rem;}
+    .card {background:#1c0b3a; padding:2rem; border-radius:1rem; box-shadow:0 0 20px rgba(0,0,0,.3);}
+    .card h3 {color:#8b5cf6; margin-bottom:1rem;}
+    .stats {display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; text-align:center;}
+    .stat {flex:1 1 200px; background:#1c0b3a; padding:2rem; border-radius:1rem;}
+    .testimonials {background:#12042f;}
+    .testimonial {max-width:700px; margin:2rem auto; font-style:italic;}
+    .faq h3 {margin-top:1.5rem; color:#8b5cf6;}
+    footer {background:#12042f; text-align:center; padding:2rem; margin-top:3rem;}
+    footer a {color:#8b5cf6; text-decoration:none; margin:0 .5rem;}
   </style>
 </head>
 <body>
   <header>
-    <h1>Ghost PvP</h1>
+    <h1>ST Studio</h1>
+    <p>Aprenda Design, Programação, Games e muito mais — 100% grátis</p>
     <nav>
-      <a href="#modos">Modos</a>
       <a href="#sobre">Sobre</a>
-      <a href="#">Entrar no Servidor</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#projeto">O Projeto</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
     </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h2 data-aos="fade-down">Ghost PvP</h2>
-      <p data-aos="fade-up">A adrenalina não para! Entre na fuga, enfrente batalhas PvP intensas e prove sua habilidade no modo Arcade. A cidade é sua arena.</p>
-      <button class="btn" data-aos="zoom-in">Explorar Modos</button>
-      <img src="https://cdn.discordapp.com/attachments/1417163261828141066/1417502453955297340/gtaonline-heist-artwork-png-8896-1600.png?ex=68cab788&is=68c96608&hm=229e9203dd1692b175750c3e5f801c63f2a6c9d234d6207031ddf234093ead06&" 
-           alt="Personagens Ghost PvP" data-aos="fade-left">
-    </section>
-
-    <section id="modos">
-      <h3 data-aos="fade-up">Modos de Jogo</h3>
-
-      <div class="modo" data-aos="fade-right">
-        <div class="texto">
-          <h3> Modo Fuga</h3>
-          <p>
-            No modo <strong>Fuga</strong>, sua missão é escapar da polícia e dos inimigos em alta velocidade. 
-            Só os mais rápidos e espertos conseguem sobreviver às perseguições intensas pelas ruas da cidade.
-          </p>
-        </div>
-        <img src="https://cdn.discordapp.com/attachments/1376759898439942265/1379652154586824724/gtao-artwork-supersportseries-png-8601-1600.png?ex=68ca20b2&is=68c8cf32&hm=70bb0e8f343ac8d732280e6b4d056bc177875715eef9c83b98238cb634464aaf&" alt="Modo Fuga">
-      </div>
-
-      <div class="modo" data-aos="fade-left">
-        <div class="texto">
-          <h3> Modo PvP</h3>
-          <p>
-            No modo <strong>PvP</strong>, o confronto é direto. Enfrente outros jogadores em batalhas cheias de adrenalina, 
-            mostre suas habilidades com armas e prove que você é o melhor da arena.
-          </p>
-        </div>
-        <img src="https://cdn.discordapp.com/attachments/1376759898439942265/1379652156315009085/gta-online-doomsdayheist-artwork-png-8747-1600.png?ex=68ca20b2&is=68c8cf32&hm=2edaceb3f5c7608338003e471e800bed7faec400e6508af241dc77348e23f616&" alt="Modo PvP">
-      </div>
-
-      <div class="modo" data-aos="fade-right">
-        <div class="texto">
-          <h3> Modo Arcade</h3>
-          <p>
-            O modo <strong>Arcade</strong> é perfeito para quem gosta de ação rápida. Participe de desafios variados, 
-            enfrente missões dinâmicas e divirta-se com amigos em partidas eletrizantes.
-          </p>
-        </div>
-        <img src="https://cdn.discordapp.com/attachments/1376759898439942265/1379651702420144268/RenderGTAIV-PremiumDesign3D8.png?ex=68ca2046&is=68c8cec6&hm=aa76db249fb8d80f12b0d5c964a8efaedc3d026c33073e96e763a6f4e7a357dd&" alt="Modo Arcade">
-      </div>
-    </section>
-
-    <section id="sobre">
-      <h3 data-aos="fade-up">Sobre o Servidor</h3>
-      <p data-aos="fade-up" data-aos-delay="200">
-        O Ghost PvP foi criado para os jogadores que buscam ação constante.  
-        Aqui você nunca vai ficar parado — seja fugindo da polícia, batalhando em PvP ou competindo no Arcade.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Ghost PvP — Todos os direitos reservados.
+  </header>  <section class="hero">
+    <h2>Conheça a Escola que vai mudar sua vida</h2>
+    <p>No ST Studio você tem acesso a cursos de alta qualidade em Design Gráfico, Programação, Desenvolvimento de Jogos e muito mais. Tudo gratuito e acessível em qualquer dispositivo, até pelo celular.</p>
+  </section>  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>O ST Studio nasceu com a missão de democratizar o ensino de tecnologia e criatividade. Nossa comunidade cresce todos os dias com alunos, criadores e professores dedicados a compartilhar conhecimento.</p>
+  </section>  <section id="cursos">
+    <h2>Nossos Cursos</h2>
+    <div class="cards">
+      <div class="card"><h3>Design Gráfico</h3><p>Aprenda Photoshop, Illustrator e técnicas modernas de criação visual.</p></div>
+      <div class="card"><h3>Programação</h3><p>Do zero ao avançado: HTML, CSS, JavaScript, Python, PHP e mais.</p></div>
+      <div class="card"><h3>Desenvolvimento de Jogos</h3><p>Crie jogos 2D e 3D, aprenda engines modernas e publique seus projetos.</p></div>
+      <div class="card"><h3>Marketing Digital</h3><p>Domine redes sociais, anúncios e estratégias de crescimento online.</p></div>
+    </div>
+  </section>  <section id="projeto">
+    <h2>O Projeto</h2>
+    <p>Nosso projeto busca impactar milhares de pessoas oferecendo conhecimento gratuito e de qualidade. Queremos preparar você para o mercado de trabalho, incentivar a criatividade e fortalecer a comunidade tech.</p>
+    <div class="stats">
+      <div class="stat"><h3>+5.000</h3><p>Alunos inscritos</p></div>
+      <div class="stat"><h3>+50</h3><p>Professores voluntários</p></div>
+      <div class="stat"><h3>+100</h3><p>Cursos disponíveis</p></div>
+    </div>
+  </section>  <section class="testimonials">
+    <h2>Depoimentos</h2>
+    <div class="testimonial">“O ST Studio mudou minha carreira! Hoje trabalho com design graças ao curso gratuito.”</div>
+    <div class="testimonial">“Aprendi programação do zero, pelo celular, e agora já faço meus primeiros freelas.”</div>
+  </section>  <section id="comunidade">
+    <h2>Nossa Comunidade</h2>
+    <p>Entre no nosso servidor do Discord e faça parte dessa revolução. Conecte-se com colegas, professores e mentores, troque experiências e cresça com a gente.</p>
+    <p><a href="https://discord.gg/seulink" target="_blank">👉 Entrar no Discord</a></p>
+  </section>  <section id="faq" class="faq">
+    <h2>Perguntas Frequentes</h2>
+    <h3>Preciso pagar para participar?</h3>
+    <p>Não! Todos os cursos são 100% gratuitos.</p>
+    <h3>Posso acessar pelo celular?</h3>
+    <p>Sim, o site é responsivo e você pode estudar em qualquer dispositivo.</p>
+    <h3>Recebo certificado?</h3>
+    <p>Alguns cursos oferecem certificado de conclusão.</p>
+  </section>  <section id="contato">
+    <h2>Contato</h2>
+    <p>Email: contato@ststudio.com</p>
+    <p>Redes sociais: 
+      <a href="#">Instagram</a> |
+      <a href="#">YouTube</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </section>  <footer>
+    <p>&copy; 2025 ST Studio. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
 </body>
 </html>
