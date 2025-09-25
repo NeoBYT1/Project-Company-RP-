@@ -1,106 +1,168 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ST Studio — Cursos Gratuitos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apeex Aposta - Comunidade</title>
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #0b0226;
-      color: #eee;
-      line-height: 1.6;
+      background: url("https://cdn.discordapp.com/attachments/1418917366800322700/1420595193895190538/grade2.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
     }
+
+    /* Overlay transparente */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(180deg, rgba(0,0,20,0.9) 0%, rgba(0,30,60,0.85) 100%);
+      z-index: -1;
+    }
+
     header {
-      background: linear-gradient(90deg,#6d28d9,#8b5cf6);
-      padding: 2rem;
-      text-align:center;
-      color:white;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: rgba(0, 0, 30, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0af;
+      z-index: 10;
     }
-    header h1 {font-size:2.5rem; font-weight:900;}
-    header p {font-size:1.2rem; margin-top:.5rem;}
-    nav {margin-top:1rem;}
-    nav a {color:#fff; margin:0 .8rem; text-decoration:none; font-weight:600;}
-    section {padding:4rem 10%;}
-    .hero {text-align:center; padding:6rem 10%; background:#12042f;}
-    .hero h2 {font-size:2.2rem; margin-bottom:1rem;}
-    .hero p {font-size:1.1rem; max-width:800px; margin:0 auto;}
-    .cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:2rem;}
-    .card {background:#1c0b3a; padding:2rem; border-radius:1rem; box-shadow:0 0 20px rgba(0,0,0,.3);}
-    .card h3 {color:#8b5cf6; margin-bottom:1rem;}
-    .stats {display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; text-align:center;}
-    .stat {flex:1 1 200px; background:#1c0b3a; padding:2rem; border-radius:1rem;}
-    .testimonials {background:#12042f;}
-    .testimonial {max-width:700px; margin:2rem auto; font-style:italic;}
-    .faq h3 {margin-top:1.5rem; color:#8b5cf6;}
-    footer {background:#12042f; text-align:center; padding:2rem; margin-top:3rem;}
-    footer a {color:#8b5cf6; text-decoration:none; margin:0 .5rem;}
+
+    header h1 {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #0af;
+    }
+
+    nav a {
+      margin-left: 25px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #0af;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 120px auto 40px auto;
+      text-align: center;
+      padding: 40px;
+      background: rgba(0, 0, 50, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(0, 200, 255, 0.4);
+    }
+
+    section h2 {
+      color: #0af;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    section p {
+      font-size: 1.05em;
+      color: #ddd;
+    }
+
+    .btn-discord {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 35px;
+      margin-top: 25px;
+      background: linear-gradient(90deg, #5865F2, #4752c4);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      box-shadow: 0 0 15px rgba(88,101,242,0.5);
+      transition: 0.3s;
+    }
+
+    .btn-discord img {
+      width: 22px;
+      height: 22px;
+    }
+
+    .btn-discord:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(88,101,242,0.9);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: rgba(0,0,30,0.8);
+      border-top: 2px solid #0af;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>ST Studio</h1>
-    <p>Aprenda Design, Programação, Games e muito mais — 100% grátis</p>
+    <h1>Apeex Aposta</h1>
     <nav>
+      <a href="#home">Início</a>
       <a href="#sobre">Sobre</a>
-      <a href="#cursos">Cursos</a>
-      <a href="#projeto">O Projeto</a>
-      <a href="#comunidade">Comunidade</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contato">Contato</a>
+      <a href="#funciona">Como Funciona</a>
+      <a href="#discord">Discord</a>
     </nav>
-  </header>  <section class="hero">
-    <h2>Conheça a Escola que vai mudar sua vida</h2>
-    <p>No ST Studio você tem acesso a cursos de alta qualidade em Design Gráfico, Programação, Desenvolvimento de Jogos e muito mais. Tudo gratuito e acessível em qualquer dispositivo, até pelo celular.</p>
-  </section>  <section id="sobre">
+  </header>
+
+  <section id="home">
+    <h2>Bem-vindo à Apeex Aposta</h2>
+  maior comunidade de apostas no Free Fire, onde você pode competir, apostar e se divertir!</p>
+  </section>
+
+  <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>O ST Studio nasceu com a missão de democratizar o ensino de tecnologia e criatividade. Nossa comunidade cresce todos os dias com alunos, criadores e professores dedicados a compartilhar conhecimento.</p>
-  </section>  <section id="cursos">
-    <h2>Nossos Cursos</h2>
-    <div class="cards">
-      <div class="card"><h3>Design Gráfico</h3><p>Aprenda Photoshop, Illustrator e técnicas modernas de criação visual.</p></div>
-      <div class="card"><h3>Programação</h3><p>Do zero ao avançado: HTML, CSS, JavaScript, Python, PHP e mais.</p></div>
-      <div class="card"><h3>Desenvolvimento de Jogos</h3><p>Crie jogos 2D e 3D, aprenda engines modernas e publique seus projetos.</p></div>
-      <div class="card"><h3>Marketing Digital</h3><p>Domine redes sociais, anúncios e estratégias de crescimento online.</p></div>
-    </div>
-  </section>  <section id="projeto">
-    <h2>O Projeto</h2>
-    <p>Nosso projeto busca impactar milhares de pessoas oferecendo conhecimento gratuito e de qualidade. Queremos preparar você para o mercado de trabalho, incentivar a criatividade e fortalecer a comunidade tech.</p>
-    <div class="stats">
-      <div class="stat"><h3>+5.000</h3><p>Alunos inscritos</p></div>
-      <div class="stat"><h3>+50</h3><p>Professores voluntários</p></div>
-      <div class="stat"><h3>+100</h3><p>Cursos disponíveis</p></div>
-    </div>
-  </section>  <section class="testimonials">
-    <h2>Depoimentos</h2>
-    <div class="testimonial">“O ST Studio mudou minha carreira! Hoje trabalho com design graças ao curso gratuito.”</div>
-    <div class="testimonial">“Aprendi programação do zero, pelo celular, e agora já faço meus primeiros freelas.”</div>
-  </section>  <section id="comunidade">
-    <h2>Nossa Comunidade</h2>
-    <p>Entre no nosso servidor do Discord e faça parte dessa revolução. Conecte-se com colegas, professores e mentores, troque experiências e cresça com a gente.</p>
-    <p><a href="https://discord.gg/seulink" target="_blank">👉 Entrar no Discord</a></p>
-  </section>  <section id="faq" class="faq">
-    <h2>Perguntas Frequentes</h2>
-    <h3>Preciso pagar para participar?</h3>
-    <p>Não! Todos os cursos são 100% gratuitos.</p>
-    <h3>Posso acessar pelo celular?</h3>
-    <p>Sim, o site é responsivo e você pode estudar em qualquer dispositivo.</p>
-    <h3>Recebo certificado?</h3>
-    <p>Alguns cursos oferecem certificado de conclusão.</p>
-  </section>  <section id="contato">
-    <h2>Contato</h2>
-    <p>Email: contato@ststudio.com</p>
-    <p>Redes sociais: 
-      <a href="#">Instagram</a> |
-      <a href="#">YouTube</a> |
-      <a href="#">Twitter</a>
-    </p>
-  </section>  <footer>
-    <p>&copy; 2025 ST Studio. Todos os direitos reservados.</p>
-    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    <p>A Apeex Aposta conecta jogadores apaixonados por Free Fire em um ambiente seguro, competitivo e divertido.</p>
+  </section>
+
+  <section id="funciona">
+    <h2>Como Funciona</h2>
+    <p>Entre em nosso servidor, participe dos eventos, aposte com responsabilidade e ganhe recompensas incríveis.</p>
+  </section>
+
+  <section id="discord">
+    <h2>Entre no Discord</h2>
+    <p>Junte-se à comunidade oficial para não perder nenhuma novidade!</p>
+    <a href="https://auth.promisse.app/login?code=AYaZVmwbuBJAwPJzmUD7G6n8eXeYyB&state=1420186573797986395+1358175969067663611" class="btn-discord">
+      <img src="https://cdn.worldvectorlogo.com/logos/discord-icon-svgrepo-com.svg" alt="Discord">
+      Entrar com a conta do discord
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2025 Apeex Aposta - Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>
