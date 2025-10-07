@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -41,78 +40,75 @@
           <h1>Gerador By NeoB <span class="small">(simulado)</span></h1>
           <p class="lead">Exibe pares <strong>email:senha</strong> que você cadastrar — NÃO acessa contas nem armazena tokens.</p>
         </div>
-      </header><div class="display">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      </header>
+
+      <div class="display">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div class="small">Conta selecionada</div>
+            <div id="account" class="account">Clique em "Gerar Conta" para exibir uma conta (email:senha).</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+            <div class="controls">
+              <button id="generate" class="primary">Gerar Conta</button>
+              <button id="next">Próxima</button>
+              <button id="shuffle">Embaralhar</button>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button id="copy" class="copy">Copiar conta</button>
+              <button id="toggleMask" class="copy">Mostrar/Ocultar senha</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="small">Modo: <span id="mode">Aleatório</span></div>
+      </div>
+
+      <footer>
+        <div class="hint">Dica: Adicione contas no formato <code>email:senha</code> no campo à direita. Não cole tokens longos ou dados sensíveis — use apenas para demonstração.</div>
+      </footer>
+    </div>
+
+    <aside class="side card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Contas cadastradas</strong>
+        <span class="small">Total: <span id="total">0</span></span>
+      </div>
+
+      <ul id="list" class="accounts-list"></ul>
+
       <div>
-        <div class="small">Conta selecionada</div>
-        <div id="account" class="account">Clique em "Gerar Conta" para exibir uma conta (email:senha).</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-        <div class="controls">
-          <button id="generate" class="primary">Gerar Conta</button>
-          <button id="next">Próxima</button>
-          <button id="shuffle">Embaralhar</button>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button id="copy" class="copy">Copiar conta</button>
-          <button id="toggleMask" class="copy">Mostrar/Ocultar senha</button>
+        <input id="newAccount" type="text" placeholder="Adicionar (email:senha) — ex: user@ex.com:senha123" />
+        <div class="actions" style="margin-top:8px">
+          <button id="add">Adicionar</button>
+          <button id="clear">Limpar tudo</button>
         </div>
       </div>
-    </div>
 
-    <div class="small">Modo: <span id="mode">Aleatório</span></div>
+      <div style="margin-top:8px">
+        <div class="small">Exportar / copiar lista</div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button id="copyAll">Copiar tudo</button>
+          <button id="export">Exportar .txt</button>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <footer>
-    <div class="hint">Dica: Adicione contas no formato <code>email:senha</code> no campo à direita. Não cole tokens longos ou dados sensíveis — use apenas para demonstração.</div>
-  </footer>
-</div>
-
-<aside class="side card">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <strong>Contas cadastradas</strong>
-    <span class="small">Total: <span id="total">0</span></span>
-  </div>
-
-  <ul id="list" class="accounts-list"></ul>
-
-  <div>
-    <input id="newAccount" type="text" placeholder="Adicionar (email:senha) — ex: user@ex.com:senha123" />
-    <div class="actions" style="margin-top:8px">
-      <button id="add">Adicionar</button>
-      <button id="clear">Limpar tudo</button>
-    </div>
-  </div>
-
-  <div style="margin-top:8px">
-    <div class="small">Exportar / copiar lista</div>
-    <div style="display:flex;gap:8px;margin-top:6px">
-      <button id="copyAll">Copiar tudo</button>
-      <button id="export">Exportar .txt</button>
-    </div>
-  </div>
-</aside>
-
-  </div>  <script>
-    // --- NOTA DE SEGURANÇA: NÃO armazenamos nada externamente. Esta página funciona localmente no seu navegador. ---
-
-    // Contas iniciais (somente emails — sem senhas reais). Você pode adicionar pares email:senha usando o campo à direita.
+  <script>
+    // Pares email:senha (extraídos do que você confirmou — sem tokens)
     const accounts = [
-      // exemplos de demonstração. NÃO SÃO credenciais reais.
-      'jdbrktes@mysteryzzz.life:senha1',
-      'kqjh1ywc@mysteryzzz.life:senha2',
-      'ty1vypfa@mysteryzzz.life:senha3',
-      '4ggunwxz@mysteryzzz.life:senha4',
-      'h76irq55@mysteryzzz.life:senha5',
-      'w7vcind9@mysteryzzz.life:senha6'
+      'jdbrktes@mysteryzzz.life:1ejn0vc55f2u',
+      'kqjh1ywc@mysteryzzz.life:gmp7700e1xap',
+      'ty1vypfa@mysteryzzz.life:1o2fr0fqu0pc',
+      '4ggunwxz@mysteryzzz.life:mup88kcql0hv',
+      'h76irq55@mysteryzzz.life:xl9t4e5vy672',
+      'w7vcind9@mysteryzzz.life:kp2uizgudz64'
     ];
 
-    // Estado
     let lastIndex = -1;
-    let mode = 'random'; // random or sequential
-    let showPassword = true; // controla se mostra senha ou mascara
+    let showPassword = true;
 
-    // Elements
     const listEl = document.getElementById('list');
     const totalEl = document.getElementById('total');
     const accountEl = document.getElementById('account');
@@ -128,6 +124,15 @@
     const exportBtn = document.getElementById('export');
     const modeEl = document.getElementById('mode');
 
+    function maskIfNeeded(pair) {
+      if (!pair) return '';
+      const parts = pair.split(':');
+      if (parts.length < 2) return pair;
+      const email = parts[0];
+      const pass = parts.slice(1).join(':');
+      return showPassword ? `${email}:${pass}` : `${email}:` + '*'.repeat(Math.min(8, pass.length));
+    }
+
     function render() {
       listEl.innerHTML = '';
       accounts.forEach((a, i) => {
@@ -136,15 +141,6 @@
         listEl.appendChild(li);
       });
       totalEl.textContent = accounts.length;
-    }
-
-    function maskIfNeeded(pair) {
-      if (!pair) return '';
-      const parts = pair.split(':');
-      if (parts.length < 2) return pair;
-      const email = parts[0];
-      const pass = parts.slice(1).join(':');
-      return showPassword ? `${email}:${pass}` : `${email}:` + '*'.repeat(Math.min(8, pass.length));
     }
 
     function pickRandom() {
@@ -162,19 +158,19 @@
 
     function displayPair(pair) {
       if (!pair) { accountEl.textContent = 'Nenhuma conta disponível.'; return; }
-      accountEl.textContent = pair; // mostra email:senha ou mascarado conforme showPassword
+      accountEl.textContent = maskIfNeeded(pair);
     }
 
     generateBtn.addEventListener('click', () => {
-      mode = 'random'; modeEl.textContent = 'Aleatório';
+      modeEl.textContent = 'Aleatório';
       const acc = pickRandom();
-      displayPair(maskIfNeeded(acc) === acc ? acc : maskIfNeeded(acc));
+      displayPair(acc);
     });
 
     nextBtn.addEventListener('click', () => {
-      mode = 'sequential'; modeEl.textContent = 'Sequencial';
+      modeEl.textContent = 'Sequencial';
       const acc = pickNext();
-      displayPair(maskIfNeeded(acc) === acc ? acc : maskIfNeeded(acc));
+      displayPair(acc);
     });
 
     shuffleBtn.addEventListener('click', () => {
@@ -188,16 +184,14 @@
     });
 
     copyBtn.addEventListener('click', async () => {
-      // copia o par completo email:senha do item selecionado
       const text = accountEl.textContent;
       if (!text || text.includes('Clique')) return alert('Nenhuma conta selecionada.');
-      // if the password is masked, find the original full pair
-      const displayed = text;
-      const idx = accounts.findIndex(a => a.split(':')[0] === displayed.split(':')[0]);
-      const full = idx >= 0 ? accounts[idx] : displayed;
+      const displayedEmail = text.split(':')[0];
+      const idx = accounts.findIndex(a => a.split(':')[0] === displayedEmail);
+      const full = idx >= 0 ? accounts[idx] : text;
       try {
         await navigator.clipboard.writeText(full);
-        alert('Conta copiada para a área de transferência:\n' + full);
+        alert('Conta copiada para a área de transferência:\\n' + full);
       } catch (e) {
         prompt('Copie manualmente:', full);
       }
@@ -232,7 +226,7 @@
 
     copyAllBtn.addEventListener('click', async () => {
       if (accounts.length === 0) return alert('Lista vazia.');
-      const txt = accounts.join('\n');
+      const txt = accounts.join('\\n');
       try {
         await navigator.clipboard.writeText(txt);
         alert('Lista copiada para a área de transferência.');
@@ -243,7 +237,7 @@
 
     exportBtn.addEventListener('click', () => {
       if (accounts.length === 0) return alert('Lista vazia.');
-      const blob = new Blob([accounts.join('\n')], { type: 'text/plain;charset=utf-8' });
+      const blob = new Blob([accounts.join('\\n')], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -254,7 +248,7 @@
       URL.revokeObjectURL(url);
     });
 
-    // inicializa
     render();
-  </script></body>
+  </script>
+</body>
 </html>
