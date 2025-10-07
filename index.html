@@ -1,168 +1,260 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apeex Aposta - Comunidade</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gerador By NeoB (Simulado)</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      background: url("https://cdn.discordapp.com/attachments/1418917366800322700/1420595193895190538/grade2.png") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Overlay transparente */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(180deg, rgba(0,0,20,0.9) 0%, rgba(0,30,60,0.85) 100%);
-      z-index: -1;
-    }
-
-    header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: rgba(0, 0, 30, 0.85);
-      backdrop-filter: blur(10px);
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #0af;
-      z-index: 10;
-    }
-
-    header h1 {
-      font-size: 1.8em;
-      font-weight: 800;
-      color: #0af;
-    }
-
-    nav a {
-      margin-left: 25px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #0af;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 120px auto 40px auto;
-      text-align: center;
-      padding: 40px;
-      background: rgba(0, 0, 50, 0.6);
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 35px rgba(0, 200, 255, 0.4);
-    }
-
-    section h2 {
-      color: #0af;
-      margin-bottom: 15px;
-      font-size: 1.8em;
-    }
-
-    section p {
-      font-size: 1.05em;
-      color: #ddd;
-    }
-
-    .btn-discord {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 35px;
-      margin-top: 25px;
-      background: linear-gradient(90deg, #5865F2, #4752c4);
-      color: #fff;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1em;
-      box-shadow: 0 0 15px rgba(88,101,242,0.5);
-      transition: 0.3s;
-    }
-
-    .btn-discord img {
-      width: 22px;
-      height: 22px;
-    }
-
-    .btn-discord:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(88,101,242,0.9);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      background: rgba(0,0,30,0.8);
-      border-top: 2px solid #0af;
-      font-size: 0.9em;
-    }
+    :root{--bg:#0b0b0f;--card:#0f1720;--accent:#ff7a18;--muted:#9aa4b2}
+    *{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#071017);color:#e6eef6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+    .wrap{width:980px;max-width:96%;display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+    header{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ffb36b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08121a}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .display{margin-top:18px;padding:20px;border-radius:12px;background:rgba(0,0,0,0.25);display:flex;flex-direction:column;gap:10px}
+    .account{font-family:monospace;background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;font-size:15px;word-break:break-all}
+    .controls{display:flex;gap:8px}
+    button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;cursor:pointer;color:inherit}
+    .primary{background:linear-gradient(90deg,var(--accent),#ffb36b);color:#08121a;border:0}
+    .copy{font-size:13px}
+    .side{display:flex;flex-direction:column;gap:12px}
+    .accounts-list{max-height:420px;overflow:auto;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .accounts-list li{padding:8px 10px;border-radius:8px;margin-bottom:6px;background:rgba(0,0,0,0.12);font-family:monospace}
+    .hint{font-size:12px;color:var(--muted)}
+    footer{margin-top:12px;font-size:12px;color:var(--muted)}
+    .small{font-size:12px;color:var(--muted)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    input[type="text"]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .mask{letter-spacing:2px}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Apeex Aposta</h1>
-    <nav>
-      <a href="#home">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#funciona">Como Funciona</a>
-      <a href="#discord">Discord</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="logo">NB</div>
+        <div>
+          <h1>Gerador By NeoB <span class="small">(simulado)</span></h1>
+          <p class="lead">Exibe pares <strong>email:senha</strong> que você cadastrar — NÃO acessa contas nem armazena tokens.</p>
+        </div>
+      </header><div class="display">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div>
+        <div class="small">Conta selecionada</div>
+        <div id="account" class="account">Clique em "Gerar Conta" para exibir uma conta (email:senha).</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+        <div class="controls">
+          <button id="generate" class="primary">Gerar Conta</button>
+          <button id="next">Próxima</button>
+          <button id="shuffle">Embaralhar</button>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button id="copy" class="copy">Copiar conta</button>
+          <button id="toggleMask" class="copy">Mostrar/Ocultar senha</button>
+        </div>
+      </div>
+    </div>
 
-  <section id="home">
-    <h2>Bem-vindo à Apeex Aposta</h2>
-  maior comunidade de apostas no Free Fire, onde você pode competir, apostar e se divertir!</p>
-  </section>
-
-  <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>A Apeex Aposta conecta jogadores apaixonados por Free Fire em um ambiente seguro, competitivo e divertido.</p>
-  </section>
-
-  <section id="funciona">
-    <h2>Como Funciona</h2>
-    <p>Entre em nosso servidor, participe dos eventos, aposte com responsabilidade e ganhe recompensas incríveis.</p>
-  </section>
-
-  <section id="discord">
-    <h2>Entre no Discord</h2>
-    <p>Junte-se à comunidade oficial para não perder nenhuma novidade!</p>
-    <a href="https://auth.promisse.app/login?code=AYaZVmwbuBJAwPJzmUD7G6n8eXeYyB&state=1420186573797986395+1358175969067663611" class="btn-discord">
-      <img src="https://cdn.worldvectorlogo.com/logos/discord-icon-svgrepo-com.svg" alt="Discord">
-      Entrar com a conta do discord
-    </a>
-  </section>
+    <div class="small">Modo: <span id="mode">Aleatório</span></div>
+  </div>
 
   <footer>
-    <p>© 2025 Apeex Aposta - Todos os direitos reservados.</p>
+    <div class="hint">Dica: Adicione contas no formato <code>email:senha</code> no campo à direita. Não cole tokens longos ou dados sensíveis — use apenas para demonstração.</div>
   </footer>
-</body>
+</div>
+
+<aside class="side card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <strong>Contas cadastradas</strong>
+    <span class="small">Total: <span id="total">0</span></span>
+  </div>
+
+  <ul id="list" class="accounts-list"></ul>
+
+  <div>
+    <input id="newAccount" type="text" placeholder="Adicionar (email:senha) — ex: user@ex.com:senha123" />
+    <div class="actions" style="margin-top:8px">
+      <button id="add">Adicionar</button>
+      <button id="clear">Limpar tudo</button>
+    </div>
+  </div>
+
+  <div style="margin-top:8px">
+    <div class="small">Exportar / copiar lista</div>
+    <div style="display:flex;gap:8px;margin-top:6px">
+      <button id="copyAll">Copiar tudo</button>
+      <button id="export">Exportar .txt</button>
+    </div>
+  </div>
+</aside>
+
+  </div>  <script>
+    // --- NOTA DE SEGURANÇA: NÃO armazenamos nada externamente. Esta página funciona localmente no seu navegador. ---
+
+    // Contas iniciais (somente emails — sem senhas reais). Você pode adicionar pares email:senha usando o campo à direita.
+    const accounts = [
+      // exemplos de demonstração. NÃO SÃO credenciais reais.
+      'jdbrktes@mysteryzzz.life:senha1',
+      'kqjh1ywc@mysteryzzz.life:senha2',
+      'ty1vypfa@mysteryzzz.life:senha3',
+      '4ggunwxz@mysteryzzz.life:senha4',
+      'h76irq55@mysteryzzz.life:senha5',
+      'w7vcind9@mysteryzzz.life:senha6'
+    ];
+
+    // Estado
+    let lastIndex = -1;
+    let mode = 'random'; // random or sequential
+    let showPassword = true; // controla se mostra senha ou mascara
+
+    // Elements
+    const listEl = document.getElementById('list');
+    const totalEl = document.getElementById('total');
+    const accountEl = document.getElementById('account');
+    const generateBtn = document.getElementById('generate');
+    const nextBtn = document.getElementById('next');
+    const shuffleBtn = document.getElementById('shuffle');
+    const copyBtn = document.getElementById('copy');
+    const toggleMaskBtn = document.getElementById('toggleMask');
+    const newAccountInput = document.getElementById('newAccount');
+    const addBtn = document.getElementById('add');
+    const clearBtn = document.getElementById('clear');
+    const copyAllBtn = document.getElementById('copyAll');
+    const exportBtn = document.getElementById('export');
+    const modeEl = document.getElementById('mode');
+
+    function render() {
+      listEl.innerHTML = '';
+      accounts.forEach((a, i) => {
+        const li = document.createElement('li');
+        li.textContent = (i+1) + '. ' + maskIfNeeded(a);
+        listEl.appendChild(li);
+      });
+      totalEl.textContent = accounts.length;
+    }
+
+    function maskIfNeeded(pair) {
+      if (!pair) return '';
+      const parts = pair.split(':');
+      if (parts.length < 2) return pair;
+      const email = parts[0];
+      const pass = parts.slice(1).join(':');
+      return showPassword ? `${email}:${pass}` : `${email}:` + '*'.repeat(Math.min(8, pass.length));
+    }
+
+    function pickRandom() {
+      if (accounts.length === 0) return null;
+      const idx = Math.floor(Math.random() * accounts.length);
+      lastIndex = idx;
+      return accounts[idx];
+    }
+
+    function pickNext() {
+      if (accounts.length === 0) return null;
+      lastIndex = (lastIndex + 1) % accounts.length;
+      return accounts[lastIndex];
+    }
+
+    function displayPair(pair) {
+      if (!pair) { accountEl.textContent = 'Nenhuma conta disponível.'; return; }
+      accountEl.textContent = pair; // mostra email:senha ou mascarado conforme showPassword
+    }
+
+    generateBtn.addEventListener('click', () => {
+      mode = 'random'; modeEl.textContent = 'Aleatório';
+      const acc = pickRandom();
+      displayPair(maskIfNeeded(acc) === acc ? acc : maskIfNeeded(acc));
+    });
+
+    nextBtn.addEventListener('click', () => {
+      mode = 'sequential'; modeEl.textContent = 'Sequencial';
+      const acc = pickNext();
+      displayPair(maskIfNeeded(acc) === acc ? acc : maskIfNeeded(acc));
+    });
+
+    shuffleBtn.addEventListener('click', () => {
+      for (let i = accounts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [accounts[i], accounts[j]] = [accounts[j], accounts[i]];
+      }
+      lastIndex = -1;
+      render();
+      accountEl.textContent = 'Lista embaralhada! Clique em Gerar Conta.';
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      // copia o par completo email:senha do item selecionado
+      const text = accountEl.textContent;
+      if (!text || text.includes('Clique')) return alert('Nenhuma conta selecionada.');
+      // if the password is masked, find the original full pair
+      const displayed = text;
+      const idx = accounts.findIndex(a => a.split(':')[0] === displayed.split(':')[0]);
+      const full = idx >= 0 ? accounts[idx] : displayed;
+      try {
+        await navigator.clipboard.writeText(full);
+        alert('Conta copiada para a área de transferência:\n' + full);
+      } catch (e) {
+        prompt('Copie manualmente:', full);
+      }
+    });
+
+    toggleMaskBtn.addEventListener('click', () => {
+      showPassword = !showPassword;
+      render();
+      if (lastIndex >= 0 && accounts[lastIndex]) {
+        accountEl.textContent = maskIfNeeded(accounts[lastIndex]);
+      }
+    });
+
+    addBtn.addEventListener('click', () => {
+      const v = newAccountInput.value.trim();
+      if (!v) return;
+      if (!v.includes(':')) return alert('Use o formato email:senha ao adicionar.');
+      const parts = v.split(':');
+      if (parts.some(p => p.length > 120)) return alert('Parte muito longa — não cole tokens ou dados sensíveis.');
+      accounts.push(v);
+      newAccountInput.value = '';
+      render();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (!confirm('Confirma limpar todas as contas?')) return;
+      accounts.length = 0;
+      lastIndex = -1;
+      render();
+      accountEl.textContent = 'Lista vazia.';
+    });
+
+    copyAllBtn.addEventListener('click', async () => {
+      if (accounts.length === 0) return alert('Lista vazia.');
+      const txt = accounts.join('\n');
+      try {
+        await navigator.clipboard.writeText(txt);
+        alert('Lista copiada para a área de transferência.');
+      } catch (e) {
+        prompt('Copie manualmente:', txt);
+      }
+    });
+
+    exportBtn.addEventListener('click', () => {
+      if (accounts.length === 0) return alert('Lista vazia.');
+      const blob = new Blob([accounts.join('\n')], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'accounts.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // inicializa
+    render();
+  </script></body>
 </html>
