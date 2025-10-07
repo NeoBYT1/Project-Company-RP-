@@ -1,254 +1,184 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gerador By NeoB </title>
-  <style>
-    :root{--bg:#0b0b0f;--card:#0f1720;--accent:#ff7a18;--muted:#9aa4b2}
-    *{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#071017);color:#e6eef6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
-    .wrap{width:980px;max-width:96%;display:grid;grid-template-columns:1fr 320px;gap:20px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
-    header{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ffb36b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08121a}
-    h1{font-size:20px;margin:0}
-    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
-    .display{margin-top:18px;padding:20px;border-radius:12px;background:rgba(0,0,0,0.25);display:flex;flex-direction:column;gap:10px}
-    .account{font-family:monospace;background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;font-size:15px;word-break:break-all}
-    .controls{display:flex;gap:8px}
-    button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;cursor:pointer;color:inherit}
-    .primary{background:linear-gradient(90deg,var(--accent),#ffb36b);color:#08121a;border:0}
-    .copy{font-size:13px}
-    .side{display:flex;flex-direction:column;gap:12px}
-    .accounts-list{max-height:420px;overflow:auto;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)}
-    .accounts-list li{padding:8px 10px;border-radius:8px;margin-bottom:6px;background:rgba(0,0,0,0.12);font-family:monospace}
-    .hint{font-size:12px;color:var(--muted)}
-    footer{margin-top:12px;font-size:12px;color:var(--muted)}
-    .small{font-size:12px;color:var(--muted)}
-    .actions{display:flex;gap:8px;flex-wrap:wrap}
-    input[type="text"]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    .mask{letter-spacing:2px}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerador By NeoB</title>
+<style>
+:root{--bg:#0b0b0f;--card:#0f1720;--accent:#ff7a18;--muted:#9aa4b2}
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#071017);color:#e6eef6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.wrap{width:980px;max-width:96%;display:grid;grid-template-columns:1fr 320px;gap:16px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+header{display:flex;align-items:center;gap:12px}
+.logo{width:50px;height:50px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ffb36b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08121a}
+h1{font-size:18px;margin:0}
+p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+.display{margin-top:14px;padding:16px;border-radius:10px;background:rgba(0,0,0,0.22);display:flex;flex-direction:column;gap:8px}
+.account{font-family:monospace;background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;font-size:15px;word-break:break-all}
+.controls{display:flex;gap:8px}
+button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:9px 10px;border-radius:8px;cursor:pointer;color:inherit}
+.primary{background:linear-gradient(90deg,var(--accent),#ffb36b);color:#08121a;border:0}
+.copy{font-size:13px}
+.side{display:flex;flex-direction:column;gap:10px}
+.accounts-list{max-height:360px;overflow:auto;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02)}
+.accounts-list li{padding:6px 8px;border-radius:6px;margin-bottom:6px;background:rgba(0,0,0,0.12);font-family:monospace}
+.hint{font-size:12px;color:var(--muted)}
+footer{margin-top:10px;font-size:12px;color:var(--muted)}
+.small{font-size:12px;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+input[type="text"]{width:100%;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <header>
-        <div class="logo">NB</div>
-        <div>
-          <h1>Gerador By NeoB <span class="small">(simulado)</span></h1>
-          <p class="lead">Exibe pares <strong>email:senha</strong> comtas geradas apenas pessoas com atorizacao pods — NÃO acessa contas nem armazena tokens.</p>
-        </div>
-      </header>
-
-      <div class="display">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-          <div>
-            <div class="small">Conta selecionada</div>
-            <div id="account" class="account">Clique em "Gerar Conta" para exibir uma conta (email:senha).</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-            <div class="controls">
-              <button id="generate" class="primary">Gerar Conta</button>
-              <button id="next">Próxima</button>
-              <button id="shuffle">Embaralhar</button>
-            </div>
-            <div style="display:flex;gap:8px">
-              <button id="copy" class="copy">Copiar conta</button>
-              <button id="toggleMask" class="copy">Mostrar/Ocultar senha</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="small">Modo: <span id="mode">Aleatório</span></div>
-      </div>
-
-      <footer>
-        <div class="hint">Dica: Adicione contas no formato <code>email:senha</code> no campo à direita. Não cole tokens longos ou dados sensíveis — use apenas para demonstração.</div>
-      </footer>
-    </div>
-
-    <aside class="side card">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong>Contas cadastradas</strong>
-        <span class="small">Total: <span id="total">0</span></span>
-      </div>
-
-      <ul id="list" class="accounts-list"></ul>
-
+<div class="wrap">
+  <div class="card">
+    <header>
+      <div class="logo">NB</div>
       <div>
-        <input id="newAccount" type="text" placeholder="Adicionar (email:senha) — ex: user@ex.com:senha123" />
-        <div class="actions" style="margin-top:8px">
-          <button id="add">Adicionar</button>
-          <button id="clear">Limpar tudo</button>
-        </div>
+        <h1>Gerador By NeoB <span class="small">(simulado)</span></h1>
+        <p class="lead">Clique em Gerar Conta para digitar a senha. Revele email+senha clicando em "Revelar Conta".</p>
       </div>
+    </header>
 
-      <div style="margin-top:8px">
-        <div class="small">Exportar / copiar lista</div>
-        <div style="display:flex;gap:8px;margin-top:6px">
-          <button id="copyAll">Copiar tudo</button>
-          <button id="export">Exportar .txt</button>
+    <div class="display">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div>
+          <div class="small">Conta selecionada</div>
+          <div id="account" class="account">Clique em "Gerar Conta" para digitar a senha.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div class="controls">
+            <button id="generate" class="primary">Gerar Conta</button>
+            <button id="reveal">Revelar Conta</button>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:4px">
+            <button id="copy" class="copy">Copiar Conta</button>
+          </div>
         </div>
       </div>
-    </aside>
+      <div class="small">Stock: <span id="stock">6</span></div>
+    </div>
   </div>
 
-  <script>
-    // Pares email:senha (extraídos do que você confirmou — sem tokens)
-    const accounts = [
-      'jdbrktes@mysteryzzz.life:1ejn0vc55f2u',
-      'kqjh1ywc@mysteryzzz.life:gmp7700e1xap',
-      'ty1vypfa@mysteryzzz.life:1o2fr0fqu0pc',
-      '4ggunwxz@mysteryzzz.life:mup88kcql0hv',
-      'h76irq55@mysteryzzz.life:xl9t4e5vy672',
-      'w7vcind9@mysteryzzz.life:kp2uizgudz64'
-    ];
+  <aside class="side card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>Contas em stock</strong>
+      <span class="small">Total: <span id="total">6</span></span>
+    </div>
 
-    let lastIndex = -1;
-    let showPassword = true;
+    <ul id="list" class="accounts-list"></ul>
 
-    const listEl = document.getElementById('list');
-    const totalEl = document.getElementById('total');
-    const accountEl = document.getElementById('account');
-    const generateBtn = document.getElementById('generate');
-    const nextBtn = document.getElementById('next');
-    const shuffleBtn = document.getElementById('shuffle');
-    const copyBtn = document.getElementById('copy');
-    const toggleMaskBtn = document.getElementById('toggleMask');
-    const newAccountInput = document.getElementById('newAccount');
-    const addBtn = document.getElementById('add');
-    const clearBtn = document.getElementById('clear');
-    const copyAllBtn = document.getElementById('copyAll');
-    const exportBtn = document.getElementById('export');
-    const modeEl = document.getElementById('mode');
+    <div>
+      <input id="newAccount" type="text" placeholder="Adicionar email (ex: usuario@mysteryzzz.life)" />
+      <div class="actions" style="margin-top:8px">
+        <button id="add">Adicionar</button>
+        <button id="clear">Limpar tudo</button>
+      </div>
+    </div>
 
-    function maskIfNeeded(pair) {
-      if (!pair) return '';
-      const parts = pair.split(':');
-      if (parts.length < 2) return pair;
-      const email = parts[0];
-      const pass = parts.slice(1).join(':');
-      return showPassword ? `${email}:${pass}` : `${email}:` + '*'.repeat(Math.min(8, pass.length));
-    }
+    <div style="margin-top:8px">
+      <div class="small">Exportar / copiar lista</div>
+      <div style="display:flex;gap:8px;margin-top:6px">
+        <button id="copyAll">Copiar tudo</button>
+        <button id="export">Exportar .txt</button>
+      </div>
+    </div>
+  </aside>
+</div>
 
-    function render() {
-      listEl.innerHTML = '';
-      accounts.forEach((a, i) => {
-        const li = document.createElement('li');
-        li.textContent = (i+1) + '. ' + maskIfNeeded(a);
-        listEl.appendChild(li);
-      });
-      totalEl.textContent = accounts.length;
-    }
+<script>
+const emails = [
+  'jdbrktes@mysteryzzz.life',
+  'kqjh1ywc@mysteryzzz.life',
+  'ty1vypfa@mysteryzzz.life',
+  '4ggunwxz@mysteryzzz.life',
+  'h76irq55@mysteryzzz.life',
+  'w7vcind9@mysteryzzz.life'
+];
 
-    function pickRandom() {
-      if (accounts.length === 0) return null;
-      const idx = Math.floor(Math.random() * accounts.length);
-      lastIndex = idx;
-      return accounts[idx];
-    }
+let currentIndex = 0;
+let currentPassword = '';
+let revealed = false;
 
-    function pickNext() {
-      if (accounts.length === 0) return null;
-      lastIndex = (lastIndex + 1) % accounts.length;
-      return accounts[lastIndex];
-    }
+const listEl = document.getElementById('list');
+const totalEl = document.getElementById('total');
+const stockEl = document.getElementById('stock');
+const accountEl = document.getElementById('account');
+const generateBtn = document.getElementById('generate');
+const revealBtn = document.getElementById('reveal');
+const copyBtn = document.getElementById('copy');
+const newAccountInput = document.getElementById('newAccount');
+const addBtn = document.getElementById('add');
+const clearBtn = document.getElementById('clear');
+const copyAllBtn = document.getElementById('copyAll');
+const exportBtn = document.getElementById('export');
 
-    function displayPair(pair) {
-      if (!pair) { accountEl.textContent = 'Nenhuma conta disponível.'; return; }
-      accountEl.textContent = maskIfNeeded(pair);
-    }
+function renderList() {
+  listEl.innerHTML = '';
+  emails.forEach((e,i)=>{
+    const li=document.createElement('li');li.textContent=(i+1)+'. '+e;listEl.appendChild(li);
+  });
+  totalEl.textContent=emails.length;
+  stockEl.textContent=emails.length;
+}
 
-    generateBtn.addEventListener('click', () => {
-      modeEl.textContent = 'Aleatório';
-      const acc = pickRandom();
-      displayPair(acc);
-    });
+generateBtn.addEventListener('click',()=>{
+  if(emails.length===0){alert('Stock vazio!'); return;}
+  const pwd=prompt('Digite a senha para esta conta:', 'byneob5657');
+  if(pwd===null) return;
+  currentPassword=pwd;
+  revealed=false;
+  accountEl.textContent='Senha: '+currentPassword;
+});
 
-    nextBtn.addEventListener('click', () => {
-      modeEl.textContent = 'Sequencial';
-      const acc = pickNext();
-      displayPair(acc);
-    });
+revealBtn.addEventListener('click',()=>{
+  if(!currentPassword){alert('Clique em Gerar Conta primeiro!'); return;}
+  accountEl.textContent=emails[currentIndex]+':'+currentPassword;
+  revealed=true;
+  currentIndex=(currentIndex+1)%emails.length;
+});
 
-    shuffleBtn.addEventListener('click', () => {
-      for (let i = accounts.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [accounts[i], accounts[j]] = [accounts[j], accounts[i]];
-      }
-      lastIndex = -1;
-      render();
-      accountEl.textContent = 'Lista embaralhada! Clique em Gerar Conta.';
-    });
+copyBtn.addEventListener('click',async()=>{
+  if(!revealed){alert('Revele a conta primeiro!'); return;}
+  try{await navigator.clipboard.writeText(accountEl.textContent);alert('Conta copiada!');}
+  catch(e){prompt('Copie manualmente:',accountEl.textContent);}
+});
 
-    copyBtn.addEventListener('click', async () => {
-      const text = accountEl.textContent;
-      if (!text || text.includes('Clique')) return alert('Nenhuma conta selecionada.');
-      const displayedEmail = text.split(':')[0];
-      const idx = accounts.findIndex(a => a.split(':')[0] === displayedEmail);
-      const full = idx >= 0 ? accounts[idx] : text;
-      try {
-        await navigator.clipboard.writeText(full);
-        alert('Conta copiada para a área de transferência:\\n' + full);
-      } catch (e) {
-        prompt('Copie manualmente:', full);
-      }
-    });
+addBtn.addEventListener('click',()=>{
+  const v=newAccountInput.value.trim();
+  if(!v) return;
+  const emailOnly=v.includes(':')?v.split(':')[0]:v;
+  if(!emailOnly.includes('@')) return alert('Email inválido');
+  emails.push(emailOnly);
+  newAccountInput.value='';
+  renderList();
+});
 
-    toggleMaskBtn.addEventListener('click', () => {
-      showPassword = !showPassword;
-      render();
-      if (lastIndex >= 0 && accounts[lastIndex]) {
-        accountEl.textContent = maskIfNeeded(accounts[lastIndex]);
-      }
-    });
+clearBtn.addEventListener('click',()=>{
+  if(!confirm('Limpar todas as contas?')) return;
+  emails.length=0;
+  currentPassword='';
+  revealed=false;
+  currentIndex=0;
+  renderList();
+  accountEl.textContent='Lista vazia.';
+});
 
-    addBtn.addEventListener('click', () => {
-      const v = newAccountInput.value.trim();
-      if (!v) return;
-      if (!v.includes(':')) return alert('Use o formato email:senha ao adicionar.');
-      const parts = v.split(':');
-      if (parts.some(p => p.length > 120)) return alert('Parte muito longa — não cole tokens ou dados sensíveis.');
-      accounts.push(v);
-      newAccountInput.value = '';
-      render();
-    });
+copyAllBtn.addEventListener('click',async()=>{
+  if(emails.length===0){alert('Lista vazia'); return;}
+  try{await navigator.clipboard.writeText(emails.join('\n'));alert('Lista copiada!');}
+  catch(e){prompt('Copie manualmente:',emails.join('\n'));}
+});
 
-    clearBtn.addEventListener('click', () => {
-      if (!confirm('Confirma limpar todas as contas?')) return;
-      accounts.length = 0;
-      lastIndex = -1;
-      render();
-      accountEl.textContent = 'Lista vazia.';
-    });
+exportBtn.addEventListener('click',()=>{
+  if(emails.length===0){alert('Lista vazia'); return;}
+  const blob=new Blob([emails.join('\n')],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='emails_stock.txt';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+});
 
-    copyAllBtn.addEventListener('click', async () => {
-      if (accounts.length === 0) return alert('Lista vazia.');
-      const txt = accounts.join('\\n');
-      try {
-        await navigator.clipboard.writeText(txt);
-        alert('Lista copiada para a área de transferência.');
-      } catch (e) {
-        prompt('Copie manualmente:', txt);
-      }
-    });
-
-    exportBtn.addEventListener('click', () => {
-      if (accounts.length === 0) return alert('Lista vazia.');
-      const blob = new Blob([accounts.join('\\n')], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'accounts.txt';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-
-    render();
-  </script>
+renderList();
+</script>
 </body>
 </html>
