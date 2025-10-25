@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title> Excluído</title></title>
-  <script>
-    // Espera 0 segundos e redireciona
-    window.location.href = "";
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teache Aposta 🎰</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p> Excluído Porque O dono da empresa Nao Pagou Pelo Site!, <a href="https://spectrum-life-hub.lovable.app/">clique aqui</a>.</p>
+  <header>
+    <h1>Teache Aposta</h1>
+    <nav>
+      <a href="/admin">Painel ADM</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Jogos Populares</h2>
+    <div class="games">
+      <button>Tigrinho 🐯</button>
+      <button>Torinho 🐂</button>
+      <button>Ratinho 🐭</button>
+    </div>
+    <section class="deposito">
+      <h3>Depósito via Pix</h3>
+      <input id="email" placeholder="Seu e-mail">
+      <input id="valor" type="number" placeholder="Valor (R$)">
+      <button onclick="criarPix()">Gerar Pix</button>
+      <div id="qr"></div>
+    </section>
+  </main>
+  <script>
+  async function criarPix(){
+    const email=document.getElementById('email').value;
+    const valor=document.getElementById('valor').value;
+    const res=await fetch('/api/create-pix',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:valor,email})});
+    const data=await res.json();
+    document.getElementById('qr').innerHTML=`<p>QR Code:</p><img src="data:image/png;base64,${data.qr_base64}"/>`;
+  }
+  </script>
 </body>
 </html>
