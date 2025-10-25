@@ -1,58 +1,33 @@
 {
-    "name": "althinect/filament-spatie-roles-permissions",
-    "description": "",
-    "keywords": [
-        "althinect",
-        "filament-spatie-roles-permissions"
-    ],
-    "homepage": "https://github.com/althinect/filament-spatie-roles-permissions",
+    "name": "anourvalar/eloquent-serialize",
+    "description": "Laravel Query Builder (Eloquent) serialization",
+    "keywords": ["laravel", "query", "builder", "querybuilder", "anourvalar", "serialize", "serialization", "eloquent", "serializable", "job", "queue", "copy"],
+    "homepage": "https://github.com/AnourValar/eloquent-serialize",
     "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Tharinda Rodrigo",
-            "email": "tharindarodrigo@gmail.com",
-            "role": "Developer"
-        }
-    ],
     "require": {
-        "php": "^8.1|^8.2",
-        "filament/filament": "^3.0",
-        "illuminate/support": "^9|^10|^11",
-        "spatie/laravel-permission": "^5.4|^6.0"
+        "php": "^7.4|^8.0",
+        "laravel/framework": "^8.0|^9.0|^10.0|^11.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.10",
-        "orchestra/testbench": "^7.0|^9.0",
-        "phpunit/phpunit": "^9.0|^10.5"
+        "phpunit/phpunit": "^9.5|^10.5",
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+        "laravel/legacy-factories": "^1.1",
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.26",
+        "squizlabs/php_codesniffer": "^3.7",
+        "psalm/plugin-laravel": "^2.8"
     },
     "autoload": {
-        "psr-4": {
-            "Althinect\\FilamentSpatieRolesPermissions\\": "src"
-        }
+        "psr-4": {"AnourValar\\EloquentSerialize\\": "src/"}
     },
     "autoload-dev": {
-        "psr-4": {
-            "Althinect\\FilamentSpatieRolesPermissions\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-    },
-    "config": {
-        "sort-packages": true
+        "psr-4": {"AnourValar\\EloquentSerialize\\Tests\\": "tests/"}
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "Althinect\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsServiceProvider"
-            ],
             "aliases": {
-                "FilamentSpatieRolesPermissions": "Althinect\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsFacade"
+                "EloquentSerialize": "AnourValar\\EloquentSerialize\\Facades\\EloquentSerializeFacade"
             }
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
